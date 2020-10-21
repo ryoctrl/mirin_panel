@@ -1,3 +1,3 @@
 export enum SiteInfo {
-  SITE_NAME = "Next-boilerplate",
+  SITE_NAME = 'Panel',
 }
