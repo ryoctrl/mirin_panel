@@ -13,7 +13,7 @@ app.prepare().then(() => {
   server.use(
     '/api',
     createProxyMiddleware({
-      target: 'http://127.0.0.1:3001',
+      target: process.env.PANEL_BACKEND_ADDRESS,
       changeOrigin: true,
       pathRewrite: {
         '^/api': '',
