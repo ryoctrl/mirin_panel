@@ -1,11 +1,8 @@
 const { resolve } = require('path');
 
+import { resolve } from 'path';
+
 const nextConfig = {
-  webpack: (config) => {
-    // src ディレクトリをエイリアスのルートに設定
-    // config.resolve.alias['~'] = resolve(__dirname, 'src');
-    return config;
-  },
   env: {
     apiKey: process.env.apiKey,
     authDomain: process.env.authDomain,
@@ -20,4 +17,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

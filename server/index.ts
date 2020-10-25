@@ -2,10 +2,26 @@ import express from 'express';
 import next from 'next';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 // import * as NextConfig from '../next.config';
+//
+
+const nextConfig = {
+    env: {
+        apiKey: process.env.apiKey,
+        authDomain: process.env.authDomain,
+        databaseURL: process.env.databaseURL,
+        projectId: process.env.projectId,
+        storageBucket: process.env.storageBucket,
+        messagingSenderId: process.env.messagingSenderId,
+        appId: process.env.appId,
+        measurementId: process.env.measurementId,
+        PANEL_BACKEND_ADDRESS: process.env.PANEL_BACKEND_ADDRESS,
+        PANEL_FRONTEND_ADDRESS: process.env.PANEL_FRONTEND_ADDRESS,
+    }
+}
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev /*, conf: '../next.config' */ });
+const app = next({ dev , conf: nextConfig });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
