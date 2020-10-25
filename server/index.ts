@@ -15,9 +15,12 @@ app.prepare().then(() => {
     createProxyMiddleware({
       target: process.env.PANEL_BACKEND_ADDRESS,
       changeOrigin: true,
-      pathRewrite: {
-        '^/api': '',
+      pathRewrite: (path, request) => {
+        console.log(path);
+        return path.replace('/api', '');
       },
+      // '^/api': '',
+      // },
       // pathRewrite: {
       //   '^/api/old-path': '/api/new-path', // rewrite path
       //   '^/api/remove/path': '/path', // remove base path
