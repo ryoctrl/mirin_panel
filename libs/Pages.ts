@@ -11,30 +11,39 @@ export class Page implements IEnum<Page> {
     '/',
     []
   );
-  public static readonly LOGIN = new Page(
+
+  public static readonly UPLOAD = new Page(
     2,
-    'ログイン',
-    'ログイン',
-    'ログインページです',
-    '/login',
+    'アップロード',
+    'アップロード',
+    'アップロード',
+    '/upload',
     []
   );
-  public static readonly ACCOUNT_SETTINGS = new Page(
-    11,
-    'アカウント設定',
-    'アカウント設定',
-    'アカウント設定のページです',
-    '/settings/account',
-    []
-  );
-  public static readonly SETTINGS = new Page(
-    10,
-    '設定',
-    '設定',
-    '',
-    '/settings',
-    [Page.ACCOUNT_SETTINGS]
-  );
+  // public static readonly LOGIN = new Page(
+  //   2,
+  //   'ログイン',
+  //   'ログイン',
+  //   'ログインページです',
+  //   '/login',
+  //   []
+  // );
+  // public static readonly ACCOUNT_SETTINGS = new Page(
+  //   11,
+  //   'アカウント設定',
+  //   'アカウント設定',
+  //   'アカウント設定のページです',
+  //   '/settings/account',
+  //   []
+  // );
+  // public static readonly SETTINGS = new Page(
+  //   10,
+  //   '設定',
+  //   '設定',
+  //   '',
+  //   '/settings',
+  //   [Page.ACCOUNT_SETTINGS]
+  // );
 
   /**
    * コンストラクタ

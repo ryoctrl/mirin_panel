@@ -1,0 +1,36 @@
+version: '2'
+services:
+  db:
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    volumes:
+      - './docker/db:/var/lib/mysql'
+    restart: always
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: aduma
+      MYSQL_DATABASE: aduma
+      MYSQL_USER: aduma
+      MYSQL_PASSWORD: aduma
+  backend:
+    image: node:14.5.0
+    volumes:
+      - './:/app'
+    restart: always
+    ports:
+      - '3000:3000'
+    working_dir: /app
+    #yarn install && yarn start だけだと、'&& yarn start'をyarn installの引数として認識しちゃう
+    command: "/bin/bash -c 'yarn install && yarn start'"
+    environment:
+      DB_TYPE: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: aduma
+      DB_PASS: aduma
+      DB_DATABASE: aduma
+      AUTH_SECURITY_ENABLED: 'true'
+      AUTH_SECURITY_HEADER: aduma-request
+      AUTH_SECURITY_HEADER_VALUE: auth-login
+      JWT_SECRET: '_u$P;:`8=L=Ghnkl5`f9_Wy:~X4=j!G_y;AsF;h=B%O~v(k}x5/fTOO-|okU<8T'

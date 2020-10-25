@@ -1,7 +1,7 @@
-import { Color } from "@material-ui/lab/Alert";
-import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AlertActions, alertStateSelector, IAlertState } from "stores/alerts";
+import { Color } from '@material-ui/lab/Alert';
+import { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AlertActions, alertStateSelector, IAlertState } from 'stores/alerts';
 
 type AlertsOperators = {
   alertState: IAlertState;

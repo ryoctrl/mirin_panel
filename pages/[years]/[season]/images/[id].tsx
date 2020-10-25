@@ -6,12 +6,12 @@ import { AppContext, Page, SiteInfo } from 'libs';
 import { IPagePayload, PageActions } from 'stores/pages';
 import { Typography } from '@material-ui/core';
 import { useUsers } from 'hooks';
-import TopPageLayout from '../components/templates/TopPageLayout';
-import { ExhibitionsActions } from '../stores/exhibitions';
+import TopPageLayout from 'components/templates/TopPageLayout';
+import ImagePageLayout from 'components/templates/ImagePageLayout';
 
 type Props = {};
 
-function Top() {
+function ImagePage() {
   const { userState } = useUsers();
   return (
     <Layout>
@@ -20,13 +20,13 @@ function Top() {
           <title>{SiteInfo.SITE_NAME}</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <TopPageLayout />
+        <ImagePageLayout />
       </div>
     </Layout>
   );
 }
 
-Top.getInitialProps = async (ctx: AppContext): Promise<Props> => {
+ImagePage.getInitialProps = async (ctx: AppContext): Promise<Props> => {
   const { store } = ctx;
 
   const pagePayload: IPagePayload = {
@@ -36,12 +36,7 @@ Top.getInitialProps = async (ctx: AppContext): Promise<Props> => {
     type: PageActions.changePage.toString(),
     payload: pagePayload,
   });
-
-  store.dispatch({
-    type: ExhibitionsActions.fetchYears.toString(),
-    payload: {},
-  });
   return {};
 };
 
-export default Top;
+export default ImagePage;

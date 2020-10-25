@@ -9,7 +9,7 @@ import Link from 'next/link';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      backgroundColor: theme.palette.common.black,
+      backgroundColor: 'rgba(0, 0, 0, 0.85)',
       height: '100vh',
     },
     siteNameContainer: {
@@ -17,11 +17,9 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: theme.palette.common.black,
 
       color: theme.palette.primary.contrastText,
       fontWeight: 'bold',
-      // boxShadow: theme.shadows[4],
       zIndex: theme.zIndex.drawer + 1,
     },
     toolbar: theme.mixins.toolbar,
@@ -31,19 +29,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     listItem: {
       border: 0,
-      // boxShadow: theme.shadows[3],
-    },
-    deactive: {
-      // transition: 'background-color 1.2s', // mouse out
-      // '&:hover': {
-      //   backgroundColor: theme.palette.primary.light,
-      //   transition: 'background-color 0.4s', // mouse over
-      // },
-      // color: '#111111',
-    },
-    active: {
-      // backgroundColor: theme.palette.primary.light,
-      // display: 'none',
     },
   })
 );
@@ -75,8 +60,8 @@ export const Sidenavi = function (props: Props) {
                 key={page.id}
                 className={
                   page.id === selectedPage.id
-                    ? `${classes.listItem} ${classes.active}`
-                    : `${classes.listItem} ${classes.deactive}`
+                    ? classes.listItem
+                    : classes.listItem
                 }
                 isActive={page.id === selectedPage.id}
                 href={page.relativeUrl}
