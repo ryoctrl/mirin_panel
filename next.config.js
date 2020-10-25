@@ -15,6 +15,7 @@ const nextConfig = {
     messagingSenderId: process.env.messagingSenderId,
     appId: process.env.appId,
     measurementId: process.env.measurementId,
+    PANEL_BACKEND_ADDRESS: process.env.PANEL_BACKEND_ADDRESS,
   },
 };
 

@@ -28,7 +28,7 @@ app.prepare().then(() => {
     })
   );
 
-  console.log(process.env.PANELBACKEND_ADDRESS, 'path /api proxyed');
+  console.log(process.env.PANEL_BACKEND_ADDRESS, 'path /api proxyed');
 
   server.all('*', (req, res) => handle(req, res));
 
