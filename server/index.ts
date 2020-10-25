@@ -16,7 +16,7 @@ app.prepare().then(() => {
       target: process.env.PANEL_BACKEND_ADDRESS,
       changeOrigin: true,
       pathRewrite: {
-        '/api': '',
+        '^/api': '',
       },
       // pathRewrite: {
       //   '^/api/old-path': '/api/new-path', // rewrite path
