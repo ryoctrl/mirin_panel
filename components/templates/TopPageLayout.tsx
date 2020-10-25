@@ -31,6 +31,8 @@ const TopPageLayout: React.FC<TopPageLayoutProps> = (props) => {
     return <ErrorComponent statusCode={404} />;
   }
 
+  console.log(exhibitionState);
+
   const year = exhibitionState.years[0];
   const exhibitions = year.exhibitions[0];
 
