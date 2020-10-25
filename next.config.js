@@ -1,5 +1,9 @@
 const { resolve } = require('path');
 
+console.log('--------------------');
+console.log('LOADING NEXT.CONFIG.JS');
+console.log('--------------------');
+
 const nextConfig = {
   env: {
     apiKey: process.env.apiKey,
