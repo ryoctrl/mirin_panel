@@ -3,6 +3,8 @@ import * as firebase from 'firebase/app';
 // import 'firebase/firestore';
 import 'firebase/storage';
 
+console.log(process.env);
+
 const firebaseConfig = {
   apiKey: process.env.apiKey,
   authDomain: process.env.authDomain,
@@ -13,6 +15,8 @@ const firebaseConfig = {
   appId: process.env.appId,
   measurementId: process.env.measurementId,
 };
+
+console.log(firebaseConfig);
 
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);

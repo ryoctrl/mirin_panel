@@ -1,7 +1,5 @@
 const { resolve } = require('path');
 
-import { resolve } from 'path';
-
 const nextConfig = {
   env: {
     apiKey: process.env.apiKey,
@@ -17,4 +15,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
