@@ -69,7 +69,7 @@ Login.getInitialProps = async (ctx: AppContext): Promise<Props> => {
   const { store } = ctx;
 
   const pagePayload: IPagePayload = {
-    selectedPage: Page.LOGIN,
+    selectedPage: Page.TOP,
   };
   store.dispatch({
     type: PageActions.changePage.toString(),

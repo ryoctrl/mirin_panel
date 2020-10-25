@@ -28,6 +28,6 @@ app.prepare().then(() => {
   server.all('*', (req, res) => handle(req, res));
 
   server.listen(port, () => {
-    console.log(`> Ready on localhost:${port} - env ${process.env.NODE_ENV}`);
+    console.log(`> Ready on http://localhost:${port} - env ${process.env.NODE_ENV}`);
   });
 });

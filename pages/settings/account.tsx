@@ -56,7 +56,7 @@ function AccountSettings(props) {
 AccountSettings.getInitialProps = async (ctx: AppContext): Promise<Props> => {
   const { store } = ctx;
 
-  const selectedPage = { ...Page.ACCOUNT_SETTINGS };
+  const selectedPage = { ...Page.TOP };
   delete selectedPage.parentPage;
 
   const pagePayload: IPagePayload = {
