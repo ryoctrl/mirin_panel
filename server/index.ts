@@ -16,7 +16,7 @@ app.prepare().then(() => {
       target: process.env.PANEL_BACKEND_ADDRESS,
       changeOrigin: true,
       pathRewrite: {
-        '^/api': '',
+        '/api': '',
       },
       // pathRewrite: {
       //   '^/api/old-path': '/api/new-path', // rewrite path
@@ -25,9 +25,13 @@ app.prepare().then(() => {
     })
   );
 
+  console.log(process.env.PANELBACKEND_ADDRESS, 'path /api proxyed');
+
   server.all('*', (req, res) => handle(req, res));
 
   server.listen(port, () => {
-    console.log(`> Ready on http://localhost:${port} - env ${process.env.NODE_ENV}`);
+    console.log(
+      `> Ready on http://localhost:${port} - env ${process.env.NODE_ENV}`
+    );
   });
 });
