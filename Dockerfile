@@ -7,6 +7,7 @@ COPY . /usr/src
 
 RUN yarn install
 
-RUN yarn build
+RUN yarn build:next
+RUN yarn build:server
 EXPOSE 3000
 CMD yarn start
