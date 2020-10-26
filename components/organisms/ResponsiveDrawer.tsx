@@ -62,10 +62,7 @@ export const ResponsiveDrawer = function (props: Props) {
         </IconButton>
       </Box>
 
-      <main className={classes.content}>
-        {/* <div className={classes.toolbar} /> */}
-        {children}
-      </main>
+      <main className={classes.content}>{children}</main>
       <Drawer
         variant="temporary"
         anchor={'right'}

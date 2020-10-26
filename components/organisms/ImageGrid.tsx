@@ -1,11 +1,9 @@
-import classes from '*.module.css';
 import {
   createStyles,
   GridList,
   GridListTile,
   makeStyles,
   Theme,
-  Typography,
 } from '@material-ui/core';
 import * as React from 'react';
 import { IExhibition, IYears } from 'models';
