@@ -23,9 +23,8 @@ jobs:
       - name: Cache node_modules
         uses: actions/cache@v2
         with:
-          path: |
-            **/node_modules
-        key: ${{ matrix.node-version }}
+          path: ./node_modules
+          key: ${{ matrix.node-version }}
 
       - name: test
         run: yarn test
@@ -55,9 +54,8 @@ jobs:
       - name: Use ache node_modules
         uses: actions/cache@v2
         with:
-          path: |
-            **/node_modules
-        key: ${{ matrix.node-version }}
+          path: ./node_modules
+          key: ${{ matrix.node-version }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
