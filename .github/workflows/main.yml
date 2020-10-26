@@ -25,7 +25,7 @@ jobs:
         with:
           path: |
             **/node_modules
-        key: ${{ node-version }}
+        key: ${{ matrix.node-version }}
 
       - name: test
         run: yarn test
@@ -57,7 +57,7 @@ jobs:
         with:
           path: |
             **/node_modules
-        key: ${{ node-version }}
+        key: ${{ matrix.node-version }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
