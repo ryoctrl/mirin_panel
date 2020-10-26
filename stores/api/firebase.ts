@@ -1,22 +1,16 @@
 import * as firebase from 'firebase/app';
-// import 'firebase/auth';
-// import 'firebase/firestore';
 import 'firebase/storage';
 
-console.log(process.env);
-
 const firebaseConfig = {
-  apiKey: process.env.apiKey,
-  authDomain: process.env.authDomain,
-  databaseURL: process.env.databaseURL,
-  projectId: process.env.projectId,
-  storageBucket: process.env.storageBucket,
-  messagingSenderId: process.env.messagingSenderId,
-  appId: process.env.appId,
-  measurementId: process.env.measurementId,
+  apiKey: process.env.NEXT_PUBLIC_apiKey,
+  authDomain: process.env.NEXT_PUBLIC_authDomain,
+  databaseURL: process.env.NEXT_PUBLIC_databaseURL,
+  projectId: process.env.NEXT_PUBLIC_projectId,
+  storageBucket: process.env.NEXT_PUBLIC_storageBucket,
+  messagingSenderId: process.env.NEXT_PUBLIC_messagingSenderId,
+  appId: process.env.NEXT_PUBLIC_appId,
+  measurementId: process.env.NEXT_PUBLIC_measurementId,
 };
-
-console.log(firebaseConfig);
 
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);

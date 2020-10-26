@@ -5,4 +5,4 @@ export enum SiteInfo {
 export const isServer = () => typeof window === 'undefined';
 
 // export const backendAddress = 'http://127.0.0.1:3000';
-export const backendAddress = process.env.PANEL_FRONTEND_ADDRESS;
+export const backendAddress = process.env.NEXT_PUBLIC_PANEL_FRONTEND_ADDRESS;

@@ -1,18 +1,18 @@
-import { createStore, applyMiddleware, Store } from "redux";
-import { MakeStore, createWrapper, Context } from "next-redux-wrapper";
-import { createRouterMiddleware } from "connected-next-router";
-import createSagaMiddleware, { Task } from "redux-saga";
+import { createStore, applyMiddleware, Store } from 'redux';
+import { MakeStore, createWrapper, Context } from 'next-redux-wrapper';
+import { createRouterMiddleware } from 'connected-next-router';
+import createSagaMiddleware, { Task } from 'redux-saga';
 
-import { combinedReducers, RootState } from "./reducers";
-import { rootSaga } from "./sagas";
+import { combinedReducers, RootState } from './reducers';
+import { rootSaga } from './sagas';
 
 export interface SagaStore extends Store {
   sagaTask?: Task;
 }
 
 const bindMiddleware = (middleware) => {
-  if (process.env.NODE_ENV !== "production") {
-    const { composeWithDevTools } = require("redux-devtools-extension");
+  if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') {
+    const { composeWithDevTools } = require('redux-devtools-extension');
     return composeWithDevTools(applyMiddleware(...middleware));
   }
   return applyMiddleware(...middleware);
