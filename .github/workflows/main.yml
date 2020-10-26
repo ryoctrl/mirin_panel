@@ -1,11 +1,40 @@
-name: CI
+name: CI_TEST
+on:
+  pull_request:
+    branches: [ master ]
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node-version: [14.5]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/steup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: install modules
+        run: yarn install
+
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: **/node_modules
+        key: ${{ node-version }}
+
+      - name: test
+        run: yarn test
+
+---
+
+name: CI_BUILD_DEPLOY
+
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -17,25 +46,42 @@ jobs:
         node-version: [14.5]
     steps:
       - uses: actions/checkout@v2
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      #- run: yarn install
-      #- run: yarn build:next
-      #- run: yarn build:server
+
+      - name: Use ache node_modules
+        uses: actions/cache@v2
+        with:
+          path: **/node_modules
+        key: ${{ node-version }}
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
+
       - name: Push to GitHub Container Registry
         uses: docker/build-push-action@v2
         with:
           push: true
           tags: ghcr.io/ryoctrl/mirin_panel:latest
+        env:
+          NEXT_PUBLIC_apiKey: ${{ secrets.FIREBASE_API_KEY }}
+          NEXT_PUBLIC_authDomain: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
+          NEXT_PUBLIC_projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
+          NEXT_PUBLIC_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
+          NEXT_PUBLIC_messagingSenderId: ${{ secrets.FIREBASE_SENDER_ID }}
+          NEXT_PUBLIC_appId: ${{ secrets.FIREBASE_APP_ID }}
+          NEXT_PUBLIC_NODE_ENV: production
+          NEXT_PUBLIC_FRONTEND_ADDRESS: ${{ secrets.FRONTEND_ADDRESS }}
