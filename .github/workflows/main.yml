@@ -23,7 +23,8 @@ jobs:
       - name: Cache node_modules
         uses: actions/cache@v2
         with:
-          path: **/node_modules
+          path: |
+            **/node_modules
         key: ${{ node-version }}
 
       - name: test
