@@ -1,7 +1,7 @@
 name: CI_TEST
 on:
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   test:
@@ -31,12 +31,11 @@ jobs:
         run: yarn test
 
 ---
-
 name: CI_BUILD_DEPLOY
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -56,7 +55,8 @@ jobs:
       - name: Use ache node_modules
         uses: actions/cache@v2
         with:
-          path: **/node_modules
+          path: |
+            **/node_modules
         key: ${{ node-version }}
 
       - name: Set up QEMU
