@@ -31,9 +31,16 @@ const TopPageLayout: React.FC<TopPageLayoutProps> = (props) => {
     return <ErrorComponent statusCode={404} />;
   }
 
-  console.log(exhibitionState);
-
   const year = exhibitionState.years[0];
+  if (!year) {
+    return (
+      <ErrorComponent
+        statusCode={404}
+        message={`${year.years}年度の展示会が企画されていません＞＜`}
+      />
+    );
+  }
+
   const exhibitions = year.exhibitions[0];
 
   return (
