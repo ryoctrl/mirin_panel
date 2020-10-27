@@ -48,7 +48,7 @@ jobs:
             NEXT_PUBLIC_authDomain=${{ secrets.FIREBASE_PROJECT_ID }}.firebaseapp.com
             NEXT_PUBLIC_databaseURL=https://${{ secrets.FIREBASE_PROJECT_ID }}.firebaseio.com
             NEXT_PUBLIC_projectId=${{ secrets.FIREBASE_PROJECT_ID }}
-            NEXT_PUBLIC_STORAGE_BUCKET=${{ secrets.FIREBASE_PROJECT_ID }}.appspot.com
+            NEXT_PUBLIC_storageBucket=${{ secrets.FIREBASE_PROJECT_ID }}.appspot.com
             NEXT_PUBLIC_messagingSenderId=${{ secrets.FIREBASE_SENDER_ID }}
             NEXT_PUBLIC_appId=${{ secrets.FIREBASE_APP_ID }}
             NEXT_PUBLIC_measurementId=${{ secrets.FIREBASE_MEASUREMENT_ID }}
