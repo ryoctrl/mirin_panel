@@ -43,14 +43,14 @@ jobs:
         with:
           push: true
           tags: ghcr.io/ryoctrl/mirin_panel:latest
-        env:
-          NEXT_PUBLIC_apiKey: ${{ secrets.FIREBASE_API_KEY }}
-          NEXT_PUBLIC_authDomain: ${{ secrets.FIREBASE_PROJECT_ID }}.firebaseapp.com
-          NEXT_PUBLIC_databaseURL: https://${{ secrets.FIREBASE_PROJECT_ID }}.firebaseio.com
-          NEXT_PUBLIC_projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
-          NEXT_PUBLIC_STORAGE_BUCKET: ${{ secrets.FIREBASE_PROJECT_ID }}.appspot.com
-          NEXT_PUBLIC_messagingSenderId: ${{ secrets.FIREBASE_SENDER_ID }}
-          NEXT_PUBLIC_appId: ${{ secrets.FIREBASE_APP_ID }}
-          NEXT_PUBLIC_measurementId: ${{ secrets.FIREBASE_MEASUREMENT_ID }}
-          NEXT_PUBLIC_NODE_ENV: production
-          NEXT_PUBLIC_FRONTEND_ADDRESS: ${{ secrets.FRONTEND_ADDRESS }}
+          build-args: |
+            NEXT_PUBLIC_apiKey=${{ secrets.FIREBASE_API_KEY }}
+            NEXT_PUBLIC_authDomain=${{ secrets.FIREBASE_PROJECT_ID }}.firebaseapp.com
+            NEXT_PUBLIC_databaseURL=https://${{ secrets.FIREBASE_PROJECT_ID }}.firebaseio.com
+            NEXT_PUBLIC_projectId=${{ secrets.FIREBASE_PROJECT_ID }}
+            NEXT_PUBLIC_STORAGE_BUCKET=${{ secrets.FIREBASE_PROJECT_ID }}.appspot.com
+            NEXT_PUBLIC_messagingSenderId=${{ secrets.FIREBASE_SENDER_ID }}
+            NEXT_PUBLIC_appId=${{ secrets.FIREBASE_APP_ID }}
+            NEXT_PUBLIC_measurementId=${{ secrets.FIREBASE_MEASUREMENT_ID }}
+            NEXT_PUBLIC_NODE_ENV=production
+            NEXT_PUBLIC_FRONTEND_ADDRESS=${{ secrets.FRONTEND_ADDRESS }}
