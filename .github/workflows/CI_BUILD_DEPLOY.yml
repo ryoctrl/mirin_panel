@@ -54,3 +54,13 @@ jobs:
             NEXT_PUBLIC_measurementId=${{ secrets.FIREBASE_MEASUREMENT_ID }}
             NEXT_PUBLIC_NODE_ENV=production
             NEXT_PUBLIC_FRONTEND_ADDRESS=${{ secrets.FRONTEND_ADDRESS }}
+
+      - name: deploy
+        env:
+          CI_KEY: ${{ secrets.CI_PRIVATE_KEY }}
+          CI_HOST: ${{ secrets.CI_HOST }}
+          CI_USER: ${{ secrets.CI_USER }}
+          CI_DIR: ${{ secrets.CI_DIR }}
+        run: echo "${CI_KEY}" > id_rsa
+          chmod 600 id_rsa
+          ssh -oStrictHostKeyChecking=no ${CI_USER}@${CI_HOST} -i id_rsa "cd ~/${CI_DIR} && ./update.sh"
