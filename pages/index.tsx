@@ -4,15 +4,12 @@ import styles from 'styles/Home.module.scss';
 import { Layout } from 'components/templates';
 import { AppContext, Page, SiteInfo } from 'libs';
 import { IPagePayload, PageActions } from 'stores/pages';
-import { Typography } from '@material-ui/core';
 import { useUsers } from 'hooks';
 import TopPageLayout from '../components/templates/TopPageLayout';
-import { ExhibitionsActions } from '../stores/exhibitions';
 
 type Props = {};
 
 function Top() {
-  const { userState } = useUsers();
   return (
     <Layout>
       <div className={styles.container}>
@@ -37,10 +34,6 @@ Top.getInitialProps = async (ctx: AppContext): Promise<Props> => {
     payload: pagePayload,
   });
 
-  store.dispatch({
-    type: ExhibitionsActions.fetchYears.toString(),
-    payload: {},
-  });
   return {};
 };
 

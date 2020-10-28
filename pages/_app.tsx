@@ -1,16 +1,25 @@
-import React from "react";
-import App, { AppInitialProps, AppContext } from "next/app";
-import { END } from "redux-saga";
-import { SagaStore, wrapper } from "stores/store";
-import { ConnectedRouter } from "connected-next-router";
-import { CssBaseline, ThemeProvider } from "@material-ui/core";
-import { MuiTheme } from "libs";
-import "styles/globals.scss";
-import Head from "next/head";
-import { Alert } from "components/organisms";
+import React from 'react';
+import App, { AppInitialProps, AppContext } from 'next/app';
+import { END } from 'redux-saga';
+import { SagaStore, wrapper } from 'stores/store';
+import { ConnectedRouter } from 'connected-next-router';
+import { CssBaseline, ThemeProvider } from '@material-ui/core';
+import { MuiTheme } from 'libs';
+import 'styles/globals.scss';
+import Head from 'next/head';
+import { Alert } from 'components/organisms';
+import { ExhibitionsActions } from 'stores/exhibitions';
 
 class WrappedApp extends App<AppInitialProps> {
   public static getInitialProps = async ({ Component, ctx }: AppContext) => {
+    const { store } = ctx;
+
+    //全ページ共通のdisptachアクションはページのgetInitialPropsを実行する前に実行しておく。
+    store.dispatch({
+      type: ExhibitionsActions.fetchYears.toString(),
+      payload: {},
+    });
+
     // 1. Wait for all page actions to dispatch
     const pageProps = {
       ...(Component.getInitialProps
