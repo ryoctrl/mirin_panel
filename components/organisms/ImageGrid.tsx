@@ -1,5 +1,6 @@
 import {
   createStyles,
+  Grid,
   GridList,
   GridListTile,
   makeStyles,
@@ -28,15 +29,15 @@ export const ImageGrid: React.FC<ImageGridProps> = (props) => {
   const classes = useStyles(props);
 
   return (
-    <GridList cellHeight="auto" className={classes.gridList} cols={3}>
+    <Grid container spacing={2}>
       {props.exhibitions.images.map((img, idx) => (
-        <GridListTile className={classes.gridTile} key={img.src + idx}>
+        <Grid key={idx} item xs>
           <ImageCard
             image={img}
             path={`/${props.years.years}/${props.exhibitions.title}`}
           />
-        </GridListTile>
+        </Grid>
       ))}
-    </GridList>
+    </Grid>
   );
 };
