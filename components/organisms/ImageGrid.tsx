@@ -1,11 +1,4 @@
-import {
-  createStyles,
-  Grid,
-  GridList,
-  GridListTile,
-  makeStyles,
-  Theme,
-} from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import * as React from 'react';
 import { IExhibition, IYears } from 'models';
 import { ImageCard } from '../molecules';
@@ -15,19 +8,7 @@ type ImageGridProps = {
   exhibitions: IExhibition;
 };
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    gridList: {},
-    gridTile: {
-      height: '320px',
-      width: '320px',
-    },
-  })
-);
-
 export const ImageGrid: React.FC<ImageGridProps> = (props) => {
-  const classes = useStyles(props);
-
   return (
     <Grid container spacing={2}>
       {props.exhibitions.images.map((img, idx) => (

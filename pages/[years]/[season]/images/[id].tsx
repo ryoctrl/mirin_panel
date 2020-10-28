@@ -4,9 +4,7 @@ import styles from 'styles/Home.module.scss';
 import { Layout } from 'components/templates';
 import { AppContext, Page, SiteInfo } from 'libs';
 import { IPagePayload, PageActions } from 'stores/pages';
-import { Typography } from '@material-ui/core';
 import { useUsers } from 'hooks';
-import TopPageLayout from 'components/templates/TopPageLayout';
 import ImagePageLayout from 'components/templates/ImagePageLayout';
 
 type Props = {};
@@ -32,10 +30,12 @@ ImagePage.getInitialProps = async (ctx: AppContext): Promise<Props> => {
   const pagePayload: IPagePayload = {
     selectedPage: Page.TOP,
   };
+
   store.dispatch({
     type: PageActions.changePage.toString(),
     payload: pagePayload,
   });
+
   return {};
 };
 
